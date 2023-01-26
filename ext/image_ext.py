@@ -6,6 +6,10 @@ bounding_box = {'top': 80, 'left': 1350, 'width': 500, 'height': 1000}
 sct = mss()
 
 
+def rgb_to_hex(rgb):
+    return '%02x%02x%02x' % rgb
+
+
 def count_field(img):
     count = 0
     tmp = False
@@ -42,17 +46,17 @@ def change_color(img, count):
     return img
 
 
-sct_img = np.array(sct.grab(bounding_box))
-crop_img = sct_img[500:600, 10:400]
-gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
-blurred = cv2.GaussianBlur(gray, (7, 7), 0)
-(T, threshInv) = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
-
-white = change_color(threshInv, count_field(gray))
-while True:
-    # print(count_field(white))
-    cv2.imshow('white', white)
-
-    if (cv2.waitKey(1) & 0xFF) == ord('q'):
-        cv2.destroyAllWindows()
-        break
+# sct_img = np.array(sct.grab(bounding_box))
+# crop_img = sct_img[500:600, 10:400]
+# gray = cv2.cvtColor(crop_img, cv2.COLOR_BGR2GRAY)
+# blurred = cv2.GaussianBlur(gray, (7, 7), 0)
+# (T, threshInv) = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)
+#
+# white = change_color(threshInv, count_field(gray))
+# while True:
+#     # print(count_field(white))
+#     cv2.imshow('white', white)
+#
+#     if (cv2.waitKey(1) & 0xFF) == ord('q'):
+#         cv2.destroyAllWindows()
+#         break

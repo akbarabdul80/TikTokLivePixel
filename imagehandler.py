@@ -52,7 +52,7 @@ while True:
     count = 0
     tmp = False
     white = image_ext.change_color(sct_img)
-    cv2.imshow('white', white)
+    # cv2.imshow('white', white)
 
     for i in threshInv:
         for x in i:
